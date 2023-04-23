@@ -19,7 +19,8 @@ public class UserController {
     public List<User> getAll(){ return userRepository.findAll(); }
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable Long id){ return userRepository.findById(id).get(); }
-
+    @GetMapping("/users/cp{immatriculation}")
+    public User getUser(@PathVariable String immatriculation){ return userRepository.findByImmatriculation(immatriculation); }
     @PostMapping("/users")
     public User createUser(@RequestBody User user){
         return userRepository.save(user);
